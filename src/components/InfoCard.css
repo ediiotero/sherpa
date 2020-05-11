@@ -1,0 +1,46 @@
+.info-card {
+  width: 30rem;
+  height: 13rem;
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  box-shadow: 0px 5px 7px #e6e6e6;
+  background-color: white;
+  margin: 1rem auto;
+}
+
+.info-add-btn {
+  width: 30rem;
+  margin: 0.5rem auto;
+}
+
+.info-card-header,
+.info-card-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-card-inputs {
+  margin-top: 2rem;
+}
+
+.info-card-title {
+  font-size: 1.5rem;
+}
+
+.info-card-x {
+  cursor: pointer;
+}
+
+.info-card-age {
+  flex: 1;
+}
+
+.info-card-gender {
+  flex: 2;
+}
+
+.info-btn-group {
+  width: 100%;
+  height: 3rem;
+}
