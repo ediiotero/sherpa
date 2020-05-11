@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { InfoContext } from "../context/InfoContext";
 import "./InfoCard.css";
 
 export const InfoCard = (props) => {
+  const { basicInfo, setBasicInfo } = useContext(InfoContext);
   const [showCard, setShowCard] = useState(false);
-  //   const [selectMale, setSelectMale] = useState(false);
-  //   const [selectFemale, setSelectFemale] = useState(false);
-  const toggleCard = () => {
-    console.log("show: ", showCard);
-    setShowCard(!showCard);
+  const [currentInfo, setCurrentInfo] = useState({});
+  const handleChange = (e) => {
+    setCurrentInfo({ ...currentInfo, [e.target.name]: e.target.value });
+    console.log(currentInfo);
   };
-  //   const toggleSelected = (e) => {
-  //     console.log(e);
-  //     if(gender === 'male') setSelectMale(!selectMale)
-  //     if(gender === 'female') setSelectMale(!selectFemale)
-  //   };
+
+  const toggleCard = () => {
+    setShowCard(!showCard);
+    // const nextDependent = {
+    //   person: "Your Dependent",
+    //   add: "Add Your Dependent",
+    //   age: null,
+    //   gender: null,
+    // };
+    // if (props.add === "Add Your Dependent") {
+    //   setBasicInfo([...basicInfo, nextDependent]);
+    // }
+  };
+
   return (
     <>
       <div
@@ -22,7 +32,7 @@ export const InfoCard = (props) => {
       >
         <button
           type="button"
-          class="btn btn-outline-primary btn-sm info-add-btn"
+          className="btn btn-outline-primary btn-sm info-add-btn"
           onClick={toggleCard}
         >
           {props.add}
@@ -33,22 +43,25 @@ export const InfoCard = (props) => {
         style={showCard ? { display: "block" } : { display: "none" }}
       >
         <div className="info-card-header">
-          <div className="text-primary info-card-title">{props.name}</div>
+          <div className="text-primary info-card-title">{props.title}</div>
           <div className="info-card-x text-muted" onClick={toggleCard}>
             x
           </div>
         </div>
         <div className="info-card-inputs">
           <section className="info-card-age">
-            <label className="font-weight-bold" for="user-age">
+            <label className="font-weight-bold" htmlFor="user-age">
               Age
             </label>
             <input
               style={{ width: "50%", height: "3rem" }}
               type="text"
-              class="form-control"
+              className="form-control"
               id="user-age"
-              aria-describedby="basic-addon3"
+              aria-describedby="user age"
+              name={props.inputName}
+              value={currentInfo.age}
+              onChange={handleChange}
             />
           </section>
           <section className="info-card-gender">
@@ -59,14 +72,14 @@ export const InfoCard = (props) => {
               Gender
             </div>
             <div
-              class="btn-group info-btn-group"
+              className="btn-group info-btn-group"
               role="radiogroup"
               aria-label="Gender buttons"
             >
               <button
                 type="button"
                 role="radio"
-                class="btn btn-outline-primary active"
+                className="btn btn-outline-primary"
                 data-toggle="button"
                 aria-pressed="false"
                 name="gender"
@@ -77,7 +90,7 @@ export const InfoCard = (props) => {
               <button
                 type="button"
                 role="radio"
-                class="btn btn-outline-primary active"
+                className="btn btn-outline-primary"
                 data-toggle="button"
                 aria-pressed="false"
                 name="gender"

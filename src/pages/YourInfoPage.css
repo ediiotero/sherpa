@@ -1,0 +1,18 @@
+.back-btn,
+.continue-btn {
+  flex: 1;
+  width: 100%;
+}
+
+.back-btn {
+  margin-right: 0.5rem;
+}
+
+.continue-btn {
+  margin-left: 0.5rem;
+}
+
+/* .center-steps {
+  margin: 0 auto;
+  text-align: center;
+} */
